@@ -1,4 +1,5 @@
 const env = require("../../env")
+const utils = require("./utils")
 
 const SENSIBO_API_URL = "https://home.sensibo.com/api/v2"
 
@@ -7,10 +8,13 @@ const routes = {
 }
 
 const apiWithSensiboKey = Object.keys(routes)
-  .reduce((prev, key) => {
+  .reduce((prevObj, currentKey) => {
     return {
-      ...prev,
-      [key]: `${routes[key]}?apiKey=${env.SENSIBO_TOKEN}`
+      ...prevObj,
+      [currentKey]: utils.formatUrlWithQueryString(
+        routes[currentKey],
+        { apiKey: env.SENSIBO_TOKEN }
+      )
     }
   }, {})
 

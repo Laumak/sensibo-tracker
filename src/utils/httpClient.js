@@ -1,10 +1,13 @@
 const fetch = require("node-fetch")
 
-async function get(url, params) {
+const utils = require("./utils")
+
+async function get(url, { params = undefined }) {
   let json = {}
 
   try {
-    const resp = await fetch(url, params)
+    const formattedUrl = utils.formatUrlWithQueryString(url, params)
+    const resp = await fetch(formattedUrl)
     json = await resp.json()
   } catch(e) {
     console.log(e) // eslint-disable-line
