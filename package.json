@@ -1,0 +1,36 @@
+{
+  "name": "express-rest",
+  "version": "0.2.1",
+  "description": "Simple Express.js app to server a restful API",
+  "main": "src/index.js",
+  "license": "MIT",
+  "author": "Lauri Mäkinen",
+  "scripts": {
+    "open:src": "nodemon --watch src --inspect",
+    "dev": "npm-run-all --parallel open:src lint:watch test:watch",
+    "start": "node src",
+    "lint": "esw src --color",
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --require babel-register ./src/**/*.test.js",
+    "test:watch": "npm run test -- --watch"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^7.4.3",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.0.1",
+    "eslint-watch": "^6.0.0",
+    "mocha": "^3.5.3",
+    "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Laumak/express-rest.git"
+  }
+}
