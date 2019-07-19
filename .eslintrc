@@ -4,7 +4,8 @@
     "eslint:recommended"
   ],
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 9,
   },
   "env": {
     "node": true,
