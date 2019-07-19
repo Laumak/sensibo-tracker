@@ -7,7 +7,7 @@
   "author": "Lauri Mäkinen",
   "scripts": {
     "open:src": "nodemon --watch src --inspect",
-    "dev": "npm-run-all --parallel open:src lint:watch test:watch",
+    "dev": "npm-run-all --parallel open:src lint:watch",
     "start": "node src",
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch",
