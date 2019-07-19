@@ -1,16 +1,8 @@
 const express = require("express")
 const apiRouter = express.Router()
 
-const authenticated = require("../middleware/authenticated")
+const sensibo = require("./sensibo")
 
-const authRoutes  = require("./auth")
-const usersRouter = require("./users")
-
-// Public routes
-apiRouter.use("/auth", authRoutes)
-
-// Protected routes
-apiRouter.use(authenticated)
-apiRouter.use("/users", usersRouter)
+apiRouter.use("/sensibo", sensibo)
 
 module.exports = apiRouter
