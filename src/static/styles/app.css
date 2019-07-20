@@ -48,6 +48,14 @@ h1 {
   justify-content: center;
 }
 
+.pod--cooling {
+  background: #9bdbff;
+}
+
+.pod--heating {
+  background: #ffaf66;
+}
+
 .pod__name {
   font-size: 2em;
   text-transform: uppercase;

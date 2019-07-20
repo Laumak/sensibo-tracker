@@ -1,8 +1,20 @@
 Vue.component('pod-template', {
   name: "pod-template",
   props: ["pod"],
+  computed: {
+    parsePodStatusClass: function() {
+      if(this.pod.acState.on === false) return ""
+
+      const statusMap = {
+        cool: "pod--cooling",
+        heat: "pod--heating",
+      }
+
+      return statusMap[this.pod.acState.mode]
+    }
+  },
   template: `
-    <div class="pod">
+    <div class="pod" :class="parsePodStatusClass">
       <h2 class="pod__name">
         {{ pod.room.name }}
       </h2>
