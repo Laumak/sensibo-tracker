@@ -59,6 +59,9 @@ h1 {
   line-height: 1.1em;
 }
 
+.pod__temperature--current {
+  margin-bottom: 0.5em;
+}
 @media screen and (max-width: 666px) {
   body {
     font-size: 14px;
