@@ -19,16 +19,16 @@
         </header>
 
         <article>
-          <div v-if="activePods.length === 0">
-            <div class="pod">Loading...</div>
+          <div v-if="activeDevices.length === 0">
+            <div class="device">Loading...</div>
           </div>
 
-          <div class="pods" v-else>
-            <pod-template
-              v-for="pod in activePods"
-              :pod="pod"
-              :key="pod.id"
-            ></pod-template>
+          <div class="devices" v-else>
+            <device-template
+              v-for="device in activeDevices"
+              :device="device"
+              :key="device.id"
+            ></device-template>
           </div>
         </article>
       </section>

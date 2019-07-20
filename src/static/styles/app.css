@@ -23,17 +23,17 @@ h1 {
   margin-bottom: 40px;
 }
 
-.pods {
+.devices {
   display: flex;
   flex-direction: row;
   max-width: 100%;
 }
 
-.pods .pod:first-child {
+.devices .device:first-child {
   margin-right: 1em;
 }
 
-.pod {
+.device {
   width: 250px;
   height: 150px;
   max-width: 100%;
@@ -49,26 +49,26 @@ h1 {
   justify-content: center;
 }
 
-.pod--cooling {
+.device--cooling {
   background: #9bdbff;
 }
 
-.pod--heating {
+.device--heating {
   background: #ffaf66;
 }
 
-.pod__name {
+.device__name {
   font-size: 2em;
   text-transform: uppercase;
   margin-bottom: .5em;
 }
 
-.pod__temperature {
+.device__temperature {
   font-size: 1.5em;
   line-height: 1.1em;
 }
 
-.pod__temperature--current {
+.device__temperature--current {
   margin-bottom: 0.5em;
 }
 
@@ -84,16 +84,16 @@ footer {
     font-size: 14px;
   }
 
-  .pods {
+  .devices {
     flex-direction: column;
   }
 
-  .pods .pod:first-child {
+  .devices .device:first-child {
     margin-right: 0;
     margin-bottom: 1em;
   }
 
-  .pod {
+  .device {
     height: 125px;
   }
 }

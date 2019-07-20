@@ -1,33 +1,33 @@
-Vue.component('pod-template', {
-  name: "pod-template",
-  props: ["pod"],
+Vue.component('device-template', {
+  name: "device-template",
+  props: ["device"],
   computed: {
-    parsePodStatusClass: function() {
-      if(this.pod.acState.on === false) return ""
+    parseDeviceStatusClass: function() {
+      if(this.device.acState.on === false) return ""
 
       const statusMap = {
-        cool: "pod--cooling",
-        heat: "pod--heating",
+        cool: "device--cooling",
+        heat: "device--heating",
       }
 
-      return statusMap[this.pod.acState.mode]
+      return statusMap[this.device.acState.mode]
     }
   },
   template: `
-    <div class="pod" :class="parsePodStatusClass">
-      <h2 class="pod__name">
-        {{ pod.room.name }}
+    <div class="device" :class="parseDeviceStatusClass">
+      <h2 class="device__name">
+        {{ device.room.name }}
       </h2>
 
-      <div class="pod__temperature pod__temperature--current">
-        Current: {{ pod.measurements.temperature }}&nbspC
+      <div class="device__temperature device__temperature--current">
+        Current: {{ device.measurements.temperature }}&nbspC
       </div>
-      <div class="pod__temperature pod__temperature--range">
+      <div class="device__temperature device__temperature--range">
         Temp range:
         <div>
-          {{ pod.smartMode.lowTemperatureThreshold }}&nbspC
+          {{ device.smartMode.lowTemperatureThreshold }}&nbspC
           -
-          {{ pod.smartMode.highTemperatureThreshold }}&nbspC
+          {{ device.smartMode.highTemperatureThreshold }}&nbspC
         </div>
       </div>
     </div>
@@ -38,16 +38,16 @@ new Vue({
   el: "#vue-root",
   data() {
     return {
-      podsLoading: false,
-      activePods: [],
+      devicesLoading: false,
+      activeDevices: [],
       fetchingInterval: undefined,
     }
   },
   async mounted() {
-    this.activePods = await this.getSensiboData()
+    this.activeDevices = await this.getSensiboData()
 
     this.fetchingInterval = setInterval(async () => {
-      this.activePods = await this.getSensiboData()
+      this.activeDevices = await this.getSensiboData()
     }, 10000)
   },
   beforeDestroy() {
@@ -55,12 +55,12 @@ new Vue({
   },
   methods: {
     getSensiboData: async () => {
-      this.podsLoading = true
+      this.devicesLoading = true
 
-      const res = await fetch("/api/v0/sensibo/pods")
+      const res = await fetch("/api/v0/sensibo/devices")
       const json = await res.json()
 
-      this.podsLoading = false
+      this.devicesLoading = false
 
       return json.result
     },

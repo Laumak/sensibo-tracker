@@ -5,14 +5,14 @@ const api = require("../utils/api")
 
 const sensiboRouter = express.Router()
 sensiboRouter
-  .get("/pods", async (_, res) => {
+  .get("/devices", async (_, res) => {
     const qsObject = { fields: "acState,measurements,smartMode,room,id" }
-    const activePods = await httpClient.get(
+    const activeDevices = await httpClient.get(
       api.allDevices,
       { params: qsObject }
     )
 
-    return res.status(200).json(activePods)
+    return res.status(200).json(activeDevices)
   })
 
 module.exports = sensiboRouter
