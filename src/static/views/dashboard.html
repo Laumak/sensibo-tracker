@@ -15,10 +15,11 @@
       </div>
 
       <ul v-else>
-        <li v-for="pod in activePods">
-          {{ pod.room.name }}:
-          {{ pod.measurements.temperature }} C
-        </li>
+        <pod-template
+          v-for="pod in activePods"
+          :pod="pod"
+          :key="pod.id"
+        ></pod-template>
       </ul>
     </div>
   </body>

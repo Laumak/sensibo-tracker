@@ -1,3 +1,14 @@
+Vue.component('pod-template', {
+  name: "pod-template",
+  props: ["pod"],
+  template: `
+    <li>
+      {{ pod.room.name }}:
+      {{ pod.measurements.temperature }} C
+    </li>
+  `
+})
+
 new Vue({
   el: "#vue-root",
   data() {
