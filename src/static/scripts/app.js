@@ -20,10 +20,13 @@ Vue.component('device-template', {
       </h2>
 
       <div class="device__temperature device__temperature--current">
-        Current: {{ device.measurements.temperature }}&nbspC
+        Tämänhetkinen
+        <div>
+          {{ device.measurements.temperature }}&nbspC
+        </div>
       </div>
       <div class="device__temperature device__temperature--range">
-        Temp range:
+        Raja-arvot
         <div>
           {{ device.smartMode.lowTemperatureThreshold }}&nbspC
           -
