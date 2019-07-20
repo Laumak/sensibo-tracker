@@ -19,6 +19,8 @@
         </header>
 
         <article>
+          <div v-if="activePods.length === 0">
+            <div class="pod">Loading...</div>
         </div>
 
         <div class="pods" v-else>
