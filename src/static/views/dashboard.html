@@ -10,7 +10,11 @@
 
   <body>
     <div id="vue-root">
-      <ul>
+      <div v-if="podsLoading">
+        <p>Loading...</p>
+      </div>
+
+      <ul v-else>
         <li v-for="pod in activePods">
           {{ pod.room.name }}:
           {{ pod.measurements.temperature }} C
