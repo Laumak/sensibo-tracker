@@ -1,3 +1,4 @@
+const path = require("path")
 const express = require("express")
 const bodyParser = require("body-parser")
 const morgan = require("morgan")
@@ -18,6 +19,7 @@ app.listen(port, () => {
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
 
 app.use(bodyParser.json())
+app.use("/static", express.static(path.resolve(__dirname, "static")))
 
 app.use("/api/v0/", apiRouter)
 app.use("/", staticRouter)
