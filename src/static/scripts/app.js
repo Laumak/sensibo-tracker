@@ -19,11 +19,19 @@ new Vue({
   data() {
     return {
       podsLoading: false,
-      activePods: []
+      activePods: [],
+      fetchingInterval: undefined,
     }
   },
   async mounted() {
     this.activePods = await this.getSensiboData()
+
+    this.fetchingInterval = setInterval(async () => {
+      this.activePods = await this.getSensiboData()
+    }, 10000)
+  },
+  beforeDestroy() {
+    clearInterval(this.fetchingInterval)
   },
   methods: {
     getSensiboData: async () => {
@@ -35,6 +43,6 @@ new Vue({
       this.podsLoading = false
 
       return json.result
-    }
+    },
   },
 })
