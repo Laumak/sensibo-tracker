@@ -6,21 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sensibo Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <link rel="stylesheet" href="/static/styles/reset.css">
+    <link rel="stylesheet" href="/static/styles/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div id="vue-root">
-      <div v-if="podsLoading">
-        <p>Loading...</p>
-      </div>
+      <div class="wrapper">
+        <h1 class="page-title">Mäkinen AC Dashboard</h1>
 
-      <ul v-else>
-        <pod-template
-          v-for="pod in activePods"
-          :pod="pod"
-          :key="pod.id"
-        ></pod-template>
-      </ul>
+        <div v-if="podsLoading">
+          <p>Loading...</p>
+        </div>
+
+        <div class="pods" v-else>
+          <pod-template
+            v-for="pod in activePods"
+            :pod="pod"
+            :key="pod.id"
+          ></pod-template>
+        </div>
+      </div>
     </div>
   </body>
 

@@ -2,10 +2,15 @@ Vue.component('pod-template', {
   name: "pod-template",
   props: ["pod"],
   template: `
-    <li>
-      {{ pod.room.name }}:
-      {{ pod.measurements.temperature }} C
-    </li>
+    <div class="pod">
+      <h2 class="pod__name">
+        {{ pod.room.name }}
+      </h2>
+
+      <div class="pod__temperature">
+        {{ pod.measurements.temperature }}&nbspC
+      </div>
+    </div>
   `
 })
 
