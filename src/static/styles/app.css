@@ -34,13 +34,14 @@ h1 {
 }
 
 .pod {
-  width: 300px;
+  width: 250px;
   height: 150px;
   max-width: 100%;
 
   background: white;
   border: 2px solid black;
   border-radius: 3px 3px 3px;
+  padding: 1em;
 
   display: flex;
   flex-direction: column;
