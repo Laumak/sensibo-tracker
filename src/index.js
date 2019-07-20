@@ -3,6 +3,7 @@ const bodyParser = require("body-parser")
 const morgan = require("morgan")
 
 const apiRouter = require("./routes/api")
+const staticRouter = require("./routes/static")
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -19,3 +20,4 @@ app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
 app.use(bodyParser.json())
 
 app.use("/api/v0/", apiRouter)
+app.use("/", staticRouter)
