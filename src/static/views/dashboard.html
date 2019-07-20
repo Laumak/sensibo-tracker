@@ -15,23 +15,33 @@
     <div id="vue-root">
       <section class="wrapper">
         <header>
-        <h1 class="page-title">Mäkinen AC Dashboard</h1>
+          <h1 class="page-title">Mäkinen AC Dashboard</h1>
         </header>
 
         <article>
           <div v-if="activePods.length === 0">
             <div class="pod">Loading...</div>
-        </div>
+          </div>
 
-        <div class="pods" v-else>
-          <pod-template
-            v-for="pod in activePods"
-            :pod="pod"
-            :key="pod.id"
-          ></pod-template>
-        </div>
+          <div class="pods" v-else>
+            <pod-template
+              v-for="pod in activePods"
+              :pod="pod"
+              :key="pod.id"
+            ></pod-template>
+          </div>
         </article>
       </section>
+
+      <footer>
+        <a
+          href="https://sensibo.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://sensibo.com/
+        </a>
+      </footer>
     </div>
   </body>
 
