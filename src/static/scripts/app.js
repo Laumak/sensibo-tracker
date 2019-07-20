@@ -22,11 +22,13 @@ Vue.component('pod-template', {
       <div class="pod__temperature pod__temperature--current">
         Current: {{ pod.measurements.temperature }}&nbspC
       </div>
-      <div class="pod__temperature pod__temperature--low">
-        Low: {{ pod.smartMode.lowTemperatureThreshold }}&nbspC
-      </div>
-      <div class="pod__temperature pod__temperature--high">
-        High: {{ pod.smartMode.highTemperatureThreshold }}&nbspC
+      <div class="pod__temperature pod__temperature--range">
+        Temp range:
+        <div>
+          {{ pod.smartMode.lowTemperatureThreshold }}&nbspC
+          -
+          {{ pod.smartMode.highTemperatureThreshold }}&nbspC
+        </div>
       </div>
     </div>
   `
