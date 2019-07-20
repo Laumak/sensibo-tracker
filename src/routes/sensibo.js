@@ -6,7 +6,7 @@ const api = require("../utils/api")
 const sensiboRouter = express.Router()
 sensiboRouter
   .get("/pods", async (_, res) => {
-    const qsObject = { fields: "acState,measurements,smartMode,room" }
+    const qsObject = { fields: "acState,measurements,smartMode,room,id" }
     const activePods = await httpClient.get(
       api.allDevices,
       { params: qsObject }
