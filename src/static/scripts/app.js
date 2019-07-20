@@ -7,8 +7,11 @@ Vue.component('pod-template', {
         {{ pod.room.name }}
       </h2>
 
-      <div class="pod__temperature">
-        {{ pod.measurements.temperature }}&nbspC
+      <div class="pod__temperature pod__temperature--current">
+        Current: {{ pod.measurements.temperature }}&nbspC
+      </div>
+      <div class="pod__temperature pod__temperature--target">
+        Target: {{ pod.acState.targetTemperature }}&nbspC
       </div>
     </div>
   `
