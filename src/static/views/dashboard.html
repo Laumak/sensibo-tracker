@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mäkinen AC Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
     <link rel="stylesheet" href="/static/styles/reset.css">
     <link rel="stylesheet" href="/static/styles/app.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
@@ -30,6 +32,22 @@
               :key="device.id"
             ></device-template>
           </div>
+        </article>
+
+        <article>
+          <line-chart
+            v-if="upstairsDataLoaded"
+            :labels="['10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00']"
+            :datasets="this.upstairsData"
+            :styles="{ position: 'relative', width: '600px' }"
+          ></line-chart>
+
+          <line-chart
+            v-if="downstairsDataLoaded"
+            :labels="['10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00']"
+            :datasets="this.downstairsData"
+            :styles="{ position: 'relative', width: '600px' }"
+          ></line-chart>
         </article>
       </section>
 

@@ -4,5 +4,6 @@
   },
   "globals": {
     "Vue": "readonly",
+    "VueChartJs": "readonly",
   }
 }
