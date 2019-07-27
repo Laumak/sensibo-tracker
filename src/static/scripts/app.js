@@ -95,11 +95,11 @@ new Vue({
       const data = [
         {
           label: "Lämpötila",
-          backgroundColor: "#9bdbff",
+          backgroundColor: "rgba(155, 219, 255, 0.7)",
           data: relevantTimePoints.map(p => p.temperature)
         }, {
           label: "Kosteus",
-          backgroundColor: "#ffaf66",
+          backgroundColor: "rgba(255, 175, 102, 0.7)",
           data: relevantTimePoints.map(p => p.humidity)
         }
       ]
@@ -117,11 +117,11 @@ new Vue({
       const data = [
         {
           label: "Lämpötila",
-          backgroundColor: "#9bdbff",
+          backgroundColor: "rgba(155, 219, 255, 0.7)",
           data: relevantTimePoints.map(p => p.temperature),
         }, {
           label: "Kosteus",
-          backgroundColor: "#ffaf66",
+          backgroundColor: "rgba(255, 175, 102, 0.7)",
           data: relevantTimePoints.map(p => p.humidity),
         }
       ]
