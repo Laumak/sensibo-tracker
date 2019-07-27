@@ -8,6 +8,15 @@ const formatUrlWithQueryString = (url, qs) => {
     }, url)
 }
 
+const arrayMove = (arr, fromIndex, toIndex) => {
+  const element = arr.result[fromIndex];
+  arr.result.splice(fromIndex, 1);
+  arr.result.splice(toIndex, 0, element);
+
+  return arr;
+}
+
 module.exports = {
   formatUrlWithQueryString,
+  arrayMove,
 }
