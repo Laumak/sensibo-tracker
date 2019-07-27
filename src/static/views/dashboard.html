@@ -16,10 +16,6 @@
   <body>
     <div id="vue-root">
       <section class="wrapper">
-        <header>
-          <h1 class="page-title">Mäkinen AC Dashboard</h1>
-        </header>
-
         <article>
           <div v-if="activeDevices.length === 0">
             <div class="device">Loading...</div>
@@ -35,6 +31,8 @@
         </article>
 
         <article>
+          <br />
+          <h2>Yläkerta</h2>
           <line-chart
             v-if="upstairsDataLoaded"
             :labels="chartLabels"
@@ -42,6 +40,8 @@
             class="line-chart-wrapper"
           ></line-chart>
 
+          <br />
+          <h2>Alakerta</h2>
           <line-chart
             v-if="downstairsDataLoaded"
             :labels="chartLabels"
