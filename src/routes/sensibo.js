@@ -1,7 +1,8 @@
 const express = require("express")
-const httpClient = require("../utils/httpClient")
 
+const httpClient = require("../utils/httpClient")
 const api = require("../utils/api")
+const db = require("../utils/db")
 
 const arrayMove = (arr, fromIndex, toIndex) => {
   const element = arr.result[fromIndex];
@@ -13,16 +14,28 @@ const arrayMove = (arr, fromIndex, toIndex) => {
 
 const sensiboRouter = express.Router()
 sensiboRouter
-  .get("/devices", async (_, res) => {
+  .get("/devices", async(req, res) => {
     const qsObject = { fields: "acState,measurements,smartMode,room,id" }
     const activeDevices = await httpClient.get(
       api.allDevices,
       { params: qsObject }
     )
 
-    const reOrderedActiveDevices = arrayMove(activeDevices, 0, 1);
+    const reorderedActiveDevices = arrayMove(activeDevices, 0, 1);
 
-    return res.status(200).json(reOrderedActiveDevices)
+    return res.status(200).json(reorderedActiveDevices)
+  })
+  .get("/devices/:id", async(req, response) => {
+    const res = await db.getDeviceById(req.params.id)
+
+    if(res.status === "error") return response.status(500).json(res)
+    return response.status(200).json(res)
+  })
+  .get("/status/:id", async(req, response) => {
+    const res = await db.getStatusByDeviceId(req.params.id)
+
+    if(res.status === "error") return response.status(500).json(res)
+    return response.status(200).json(res)
   })
 
 module.exports = sensiboRouter
