@@ -17,6 +17,10 @@ sensiboRouter
     return response.status(200).json(res)
   })
   .get("/status/:id", async(req, response) => {
-    const res = await db.getStatusByDeviceId(req.params.id)
+    const dbResponse = await db.getStatusByDeviceId(req.params.id)
+
+    if(dbResponse.status === "error") return response.status(500).json(dbResponse)
+    return response.status(200).json(dbResponse)
+  })
 
 module.exports = sensiboRouter

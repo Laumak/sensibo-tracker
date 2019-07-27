@@ -10,7 +10,9 @@ pgClient.connect()
 module.exports = {
   getDeviceById: async (deviceId) => {
     try {
-      const { rows } = await pgClient.query("SELECT * FROM public.devices WHERE id = $1", [deviceId])
+      const { rows } = await pgClient.query(`
+        SELECT * FROM public.devices WHERE id = $1
+      `, [deviceId])
       return rows
     } catch (err) {
       console.log(err.stack) // eslint-disable-line
@@ -24,9 +26,9 @@ module.exports = {
         FROM public.statuses
         WHERE device_id = $1;
       `, [deviceId])
+
       return rows
     } catch (err) {
-      console.log(err.stack) // eslint-disable-line
       return err
     }
   }
