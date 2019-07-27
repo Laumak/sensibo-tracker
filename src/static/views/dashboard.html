@@ -37,14 +37,14 @@
         <article>
           <line-chart
             v-if="upstairsDataLoaded"
-            :labels="['10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00']"
+            :labels="chartLabels"
             :datasets="this.upstairsData"
             :styles="{ position: 'relative', width: '600px' }"
           ></line-chart>
 
           <line-chart
             v-if="downstairsDataLoaded"
-            :labels="['10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00']"
+            :labels="chartLabels"
             :datasets="this.downstairsData"
             :styles="{ position: 'relative', width: '600px' }"
           ></line-chart>

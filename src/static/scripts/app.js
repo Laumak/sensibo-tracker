@@ -53,10 +53,12 @@ new Vue({
   el: "#vue-root",
   data: () => ({
     devicesLoading: false,
-    upstairsDataLoaded: false,
-    downstairsDataLoaded: false,
     activeDevices: [],
     fetchingInterval: undefined,
+
+    upstairsDataLoaded: false,
+    downstairsDataLoaded: false,
+    chartLabels: [],
     upstairsData: [],
     downstairsData: [],
   }),
@@ -73,41 +75,58 @@ new Vue({
     clearInterval(this.fetchingInterval)
   },
   methods: {
+    parseRelevantTimePoints: function(data) {
+      return data.filter(p => {
+        const minutes = new Date(p.date).getMinutes()
+        return minutes === 30 || minutes === 0
+      })
+    },
+    getRelevantLabels: function(data) {
+      return this.parseRelevantTimePoints(data).map(p => {
+        return new Date(p.date).toTimeString().substr(0, 5)
+      })
+    },
     getUpstairsData: async function() {
       const res = await fetch("/api/v0/sensibo/status/wUpzsX6u")
       const json = await res.json()
+      const relevantTimePoints = this.parseRelevantTimePoints(json)
 
+      const labels = this.getRelevantLabels(json)
       const data = [
         {
           label: "Lämpötila",
           backgroundColor: "#9bdbff",
-          data: json.map(p => p.temperature),
+          data: relevantTimePoints.map(p => p.temperature)
         }, {
           label: "Kosteus",
           backgroundColor: "#ffaf66",
-          data: json.map(p => p.humidity),
+          data: relevantTimePoints.map(p => p.humidity)
         }
       ]
 
+      this.chartLabels = labels
       this.upstairsData = data
       this.upstairsDataLoaded = true
     },
     getDownstairsData: async function() {
       const res = await fetch("/api/v0/sensibo/status/GGJKvCDD")
       const json = await res.json()
+      const relevantTimePoints = this.parseRelevantTimePoints(json)
 
+      const labels = this.getRelevantLabels(json)
       const data = [
         {
           label: "Lämpötila",
           backgroundColor: "#9bdbff",
-          data: json.map(p => p.temperature),
+          data: relevantTimePoints.map(p => p.temperature),
         }, {
           label: "Kosteus",
           backgroundColor: "#ffaf66",
-          data: json.map(p => p.humidity),
+          data: relevantTimePoints.map(p => p.humidity),
         }
       ]
 
+      this.chartLabels = labels
       this.downstairsData = data
       this.downstairsDataLoaded = true
     },
