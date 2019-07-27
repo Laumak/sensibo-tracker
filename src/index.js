@@ -26,4 +26,6 @@ app.use("/static", express.static(path.resolve(__dirname, "static")))
 app.use("/api/v0/", apiRouter)
 app.use("/", staticRouter)
 
-setupCronJobs()
+if(process.env.NODE_ENV === "production") {
+  setupCronJobs()
+}
