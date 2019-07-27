@@ -39,14 +39,14 @@
             v-if="upstairsDataLoaded"
             :labels="chartLabels"
             :datasets="this.upstairsData"
-            :styles="{ position: 'relative', width: '600px' }"
+            class="line-chart-wrapper"
           ></line-chart>
 
           <line-chart
             v-if="downstairsDataLoaded"
             :labels="chartLabels"
             :datasets="this.downstairsData"
-            :styles="{ position: 'relative', width: '600px' }"
+            class="line-chart-wrapper"
           ></line-chart>
         </article>
       </section>

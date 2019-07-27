@@ -79,6 +79,11 @@ footer {
   margin-top: 2em;
 }
 
+.line-chart-wrapper {
+  height: 250px;
+  width: 600px;
+}
+
 @media screen and (max-width: 666px) {
   body {
     font-size: 14px;
@@ -95,5 +100,15 @@ footer {
 
   .device {
     height: 125px;
+  }
+
+  .line-chart-wrapper {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .line-chart-wrapper {
+    width: 250px;
   }
 }
