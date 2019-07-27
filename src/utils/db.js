@@ -31,5 +31,26 @@ module.exports = {
     } catch (err) {
       return err
     }
-  }
+  },
+  saveDeviceStatusData: async (allDevices) => {
+    const nowInSeconds = Date.now() / 1000
+
+    try {
+      allDevices.forEach(async ({ id, acState, measurements }) => {
+        const deviceStatus = acState.on ? "on" : "off"
+        const { rows } = await pgClient.query(`
+          INSERT
+            INTO public.statuses(device_id, date, status, temperature, humidity)
+            VALUES($1, to_timestamp($2), $3, $4, $5)
+            RETURNING *
+        `, [id, nowInSeconds, deviceStatus, measurements.temperature, measurements.humidity])
+
+        return rows
+      })
+
+      return { status: "ok", data: { message: "Device data successully saved to DB." } }
+    } catch (err) {
+      return err
+    }
+  },
 }

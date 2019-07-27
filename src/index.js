@@ -3,6 +3,8 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const morgan = require("morgan")
 
+const setupCronJobs = require("./utils/cron")
+
 const apiRouter = require("./routes/api")
 const staticRouter = require("./routes/static")
 
@@ -23,3 +25,5 @@ app.use("/static", express.static(path.resolve(__dirname, "static")))
 
 app.use("/api/v0/", apiRouter)
 app.use("/", staticRouter)
+
+setupCronJobs()
