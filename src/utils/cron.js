@@ -8,8 +8,8 @@ const setupCronJobs = () => {
   new CronJob("* * * * *", async () => {
     console.log("CRON: Fetching device statuses & saving to DB...") // eslint-disable-line
 
-    const allDevices = await api.getActiveDevices().result
-    db.saveDeviceStatusData(allDevices)
+    const allDevices = await api.getActiveDevices()
+    db.saveDeviceStatusData(allDevices.result)
 
     console.log("CRON: Data saved.") // eslint-disable-line
   }, null, true, "Europe/Helsinki")
