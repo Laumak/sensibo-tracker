@@ -54,9 +54,12 @@ h2 {
   min-height: 160px;
 
   background: white;
-  border: 2px solid black;
   border-radius: 3px 3px 3px;
+  box-shadow: 0px 0px 5px #c5d7db;
   padding: 1em;
+
+  color: #000;
+  text-shadow: 0.5px 0.5px 1px #6a6a6a;
 
   display: flex;
   flex-direction: column;
@@ -94,9 +97,12 @@ h2 {
 
 .timeframe-select {
   width: 200px;
-  height: 2em;
+  height: 1.9em;
   text-align: center;
   font-size: 1.5em;
+  box-shadow: 0px 0px 5px #c5d7db;
+  border-radius: 3px 3px 3px;
+  border-color: #c5d7db;
 }
 
 footer {
