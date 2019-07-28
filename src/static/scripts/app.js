@@ -79,7 +79,7 @@ new Vue({
     parseRelevantTimePoints: function(data) {
       return data.filter(p => {
         const minutes = new Date(p.date).getMinutes()
-        return minutes === 30 || minutes === 0
+        return minutes === 0
       })
     },
     getRelevantLabels: function(data) {
