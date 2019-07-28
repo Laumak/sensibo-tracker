@@ -17,8 +17,14 @@
     <div id="vue-root">
       <section class="wrapper">
         <article class="current-measurements">
-          <div v-if="activeDevices.length === 0">
-            <div class="device">Loading...</div>
+          <div class="devices" v-if="activeDevices.length === 0">
+            <div class="device">
+              <p>Yläkerta lataa...</p>
+            </div>
+
+            <div class="device">
+              <p>Alakerta lataa...</p>
+            </div>
           </div>
 
           <div class="devices" v-else>
