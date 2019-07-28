@@ -10,6 +10,11 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
 .wrapper {
   text-align: center;
 
@@ -69,6 +74,7 @@ h1 {
 }
 
 .device__temperature--current {
+  font-size: 2.5em;
   margin-bottom: 0.5em;
 }
 

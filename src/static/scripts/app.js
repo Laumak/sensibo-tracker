@@ -20,10 +20,7 @@ Vue.component("device-template", {
       </h2>
 
       <div class="device__temperature device__temperature--current">
-        Tämänhetkinen
-        <div>
-          {{ device.measurements.temperature }}&nbspC
-        </div>
+        {{ device.measurements.temperature }}&nbspC
       </div>
       <div class="device__temperature device__temperature--range">
         Raja-arvot
