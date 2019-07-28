@@ -16,8 +16,9 @@ sensiboRouter
     if(res.status === "error") return response.status(500).json(res)
     return response.status(200).json(res)
   })
-  .get("/status/:id", async(req, response) => {
-    const dbResponse = await db.getStatusByDeviceId(req.params.id)
+  .get("/status/:id/:time", async(req, response) => {
+    const { id, time } = req.params
+    const dbResponse = await db.getStatusByDeviceId(id, time)
 
     if(dbResponse.status === "error") return response.status(500).json(dbResponse)
     return response.status(200).json(dbResponse)

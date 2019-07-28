@@ -72,6 +72,10 @@ h1 {
   margin-bottom: 0.5em;
 }
 
+.charts {
+  margin-top: 20px;
+}
+
 footer {
   text-align: center;
   width: 100%;

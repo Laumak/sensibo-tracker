@@ -40,13 +40,13 @@ Vue.component("device-template", {
 Vue.component("LineChart", {
   name: "line-chart",
   extends: VueChartJs.Line,
-  props: ["labels", "datasets"],
+  mixins: [VueChartJs.mixins.reactiveProp],
   mounted () {
     this.renderChart(
-      { labels: this.labels, datasets: this.datasets },
+      this.chartData,
       { responsive: true, maintainAspectRatio: false }
     )
-  }
+  },
 })
 
 new Vue({
@@ -61,6 +61,7 @@ new Vue({
     chartLabels: [],
     upstairsData: [],
     downstairsData: [],
+    selectedTimeframe: "12",
   }),
   async mounted() {
     this.getUpstairsData()
@@ -87,7 +88,7 @@ new Vue({
       })
     },
     getUpstairsData: async function() {
-      const res = await fetch("/api/v0/sensibo/status/wUpzsX6u")
+      const res = await fetch(`/api/v0/sensibo/status/wUpzsX6u/${this.selectedTimeframe}`)
       const json = await res.json()
       const relevantTimePoints = this.parseRelevantTimePoints(json)
 
@@ -109,7 +110,7 @@ new Vue({
       this.upstairsDataLoaded = true
     },
     getDownstairsData: async function() {
-      const res = await fetch("/api/v0/sensibo/status/GGJKvCDD")
+      const res = await fetch(`/api/v0/sensibo/status/GGJKvCDD/${this.selectedTimeframe}`)
       const json = await res.json()
       const relevantTimePoints = this.parseRelevantTimePoints(json)
 
@@ -139,6 +140,10 @@ new Vue({
       this.devicesLoading = false
 
       return json.result
+    },
+    handleOnTimeframeSelect: function() {
+      this.getUpstairsData();
+      this.getDownstairsData();
     },
   },
 })

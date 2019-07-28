@@ -16,7 +16,7 @@
   <body>
     <div id="vue-root">
       <section class="wrapper">
-        <article>
+        <article class="current-measurements">
           <div v-if="activeDevices.length === 0">
             <div class="device">Loading...</div>
           </div>
@@ -30,22 +30,33 @@
           </div>
         </article>
 
-        <article>
+        <article class="charts">
+          <select
+            v-model="selectedTimeframe"
+            @change="handleOnTimeframeSelect"
+          >
+            <option value="12">12 Tuntia</option>
+            <option value="24">24 Tuntia</option>
+          </select>
+
           <br />
+          <br />
+
           <h2>Yläkerta</h2>
           <line-chart
             v-if="upstairsDataLoaded"
-            :labels="chartLabels"
-            :datasets="this.upstairsData"
+            label="Yläkerta"
+            :chart-data="{ labels: chartLabels, datasets: upstairsData }"
             class="line-chart-wrapper"
           ></line-chart>
 
           <br />
+
           <h2>Alakerta</h2>
           <line-chart
             v-if="downstairsDataLoaded"
-            :labels="chartLabels"
-            :datasets="this.downstairsData"
+            label="Alakerta"
+            :chart-data="{ labels: chartLabels, datasets: downstairsData }"
             class="line-chart-wrapper"
           ></line-chart>
         </article>

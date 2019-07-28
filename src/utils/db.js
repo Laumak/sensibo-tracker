@@ -19,19 +19,24 @@ module.exports = {
       return err
     }
   },
-  getStatusByDeviceId: async (deviceId) => {
+  getStatusByDeviceId: async (deviceId, time) => {
+    const hoursBefore = new Date();
+    hoursBefore.setHours(hoursBefore.getHours() - time);
+    const hoursBeforeInSeconds = hoursBefore / 1000
+
     try {
       const { rows } = await pgClient.query(`
         WITH t AS (
           SELECT id, device_id, date, temperature, humidity, status
           FROM public.statuses
           WHERE device_id = $1
+            AND date > to_timestamp($2)
           ORDER BY date DESC
-          LIMIT 60
+          LIMIT 500
         )
 
         SELECT * FROM t ORDER BY date ASC;
-      `, [deviceId])
+      `, [deviceId, hoursBeforeInSeconds])
 
       return rows
     } catch (err) {
