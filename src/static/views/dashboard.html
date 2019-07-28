@@ -39,26 +39,27 @@
             <option value="24">24 Tuntia</option>
           </select>
 
-          <br />
-          <br />
+          <div class="charts-wrapper">
+            <div class="chart-component">
+              <h2>Yläkerta</h2>
+              <line-chart
+                v-if="upstairsDataLoaded"
+                label="Yläkerta"
+                :chart-data="{ labels: chartLabels, datasets: upstairsData }"
+                class="line-chart-wrapper"
+              ></line-chart>
+            </div>
 
-          <h2>Yläkerta</h2>
-          <line-chart
-            v-if="upstairsDataLoaded"
-            label="Yläkerta"
-            :chart-data="{ labels: chartLabels, datasets: upstairsData }"
-            class="line-chart-wrapper"
-          ></line-chart>
-
-          <br />
-
-          <h2>Alakerta</h2>
-          <line-chart
-            v-if="downstairsDataLoaded"
-            label="Alakerta"
-            :chart-data="{ labels: chartLabels, datasets: downstairsData }"
-            class="line-chart-wrapper"
-          ></line-chart>
+            <div class="chart-component">
+              <h2>Alakerta</h2>
+              <line-chart
+                v-if="downstairsDataLoaded"
+                label="Alakerta"
+                :chart-data="{ labels: chartLabels, datasets: downstairsData }"
+                class="line-chart-wrapper"
+              ></line-chart>
+            </div>
+          </div>
         </article>
       </section>
 

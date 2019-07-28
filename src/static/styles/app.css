@@ -83,9 +83,19 @@ footer {
   margin-top: 2em;
 }
 
+.charts-wrapper {
+  position: relative;
+  margin-top: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .line-chart-wrapper {
-  height: 250px;
+  position: relative;
   width: 600px;
+  height: 250px;
 }
 
 @media screen and (max-width: 666px) {
@@ -107,12 +117,12 @@ footer {
   }
 
   .line-chart-wrapper {
-    width: 400px;
+    width: 420px;
   }
 }
 
 @media screen and (max-width: 420px) {
   .line-chart-wrapper {
-    width: 250px;
+    width: 350px;
   }
 }
