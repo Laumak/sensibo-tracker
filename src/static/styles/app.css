@@ -20,6 +20,14 @@ h2 {
   text-transform: uppercase;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  color: #1a009f;
+}
+
 .wrapper {
   max-width: 600px;
   text-align: center;
