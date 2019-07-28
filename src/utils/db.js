@@ -30,7 +30,7 @@ module.exports = {
           SELECT id, device_id, date, temperature, humidity, status
           FROM public.statuses
           WHERE device_id = $1
-            AND date > to_timestamp($2)
+            AND date >= to_timestamp($2)
           ORDER BY date DESC
           LIMIT 500
         )
