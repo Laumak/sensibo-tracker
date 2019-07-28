@@ -22,9 +22,15 @@ module.exports = {
   getStatusByDeviceId: async (deviceId) => {
     try {
       const { rows } = await pgClient.query(`
-        SELECT id, device_id, date, temperature, humidity, status
-        FROM public.statuses
-        WHERE device_id = $1;
+        WITH t AS (
+          SELECT id, device_id, date, temperature, humidity, status
+          FROM public.statuses
+          WHERE device_id = $1
+          ORDER BY date DESC
+          LIMIT 60
+        )
+
+        SELECT * FROM t ORDER BY date ASC;
       `, [deviceId])
 
       return rows
