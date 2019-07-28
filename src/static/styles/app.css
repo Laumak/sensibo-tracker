@@ -92,6 +92,13 @@ h2 {
   margin-top: 20px;
 }
 
+.timeframe-select {
+  width: 200px;
+  height: 2em;
+  text-align: center;
+  font-size: 1.5em;
+}
+
 footer {
   text-align: center;
   width: 100%;
