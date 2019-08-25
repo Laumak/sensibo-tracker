@@ -58,7 +58,7 @@ new Vue({
     chartLabels: [],
     upstairsData: [],
     downstairsData: [],
-    selectedTimeframe: "12",
+    selectedTimeframe: localStorage.getItem("selectedTimeframe") || "12",
   }),
   async mounted() {
     this.getUpstairsData()
@@ -146,9 +146,10 @@ new Vue({
 
       return json.result
     },
-    handleOnTimeframeSelect: function() {
-      this.getUpstairsData();
-      this.getDownstairsData();
+    handleOnTimeframeSelect: function(e) {
+      localStorage.setItem("selectedTimeframe", e.target.value)
+      this.getUpstairsData()
+      this.getDownstairsData()
     },
   },
 })
