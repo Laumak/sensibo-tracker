@@ -65,9 +65,12 @@ new Vue({
     this.getDownstairsData()
     this.activeDevices = await this.getSensiboData()
 
+    const tenSecondsInMilliseconds = 10000
     this.fetchingInterval = setInterval(async () => {
       this.activeDevices = await this.getSensiboData()
-    }, 10000)
+      this.getUpstairsData()
+      this.getDownstairsData()
+    }, tenSecondsInMilliseconds)
   },
   beforeDestroy() {
     clearInterval(this.fetchingInterval)
