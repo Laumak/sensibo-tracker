@@ -76,7 +76,12 @@ new Vue({
     parseRelevantTimePoints: function(data) {
       return data.filter(p => {
         const minutes = new Date(p.date).getMinutes()
-        return minutes === 0
+        const everyHour = minutes === 0
+        const everyFiveMinutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+
+        return this.selectedTimeframe === "1"
+          ? everyFiveMinutes.includes(minutes)
+          : everyHour
       })
     },
     getRelevantLabels: function(data) {
