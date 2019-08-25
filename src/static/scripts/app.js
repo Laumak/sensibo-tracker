@@ -58,7 +58,7 @@ new Vue({
     chartLabels: [],
     upstairsData: [],
     downstairsData: [],
-    selectedTimeframe: localStorage.getItem("selectedTimeframe") || "12",
+    selectedTimeframe: localStorage.getItem("selectedTimeframe") || "60",
   }),
   async mounted() {
     this.getUpstairsData()
@@ -82,7 +82,7 @@ new Vue({
         const everyHour = minutes === 0
         const everyFiveMinutes = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
 
-        return this.selectedTimeframe === "1"
+        return this.selectedTimeframe === "60"
           ? everyFiveMinutes.includes(minutes)
           : everyHour
       })

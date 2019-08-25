@@ -19,11 +19,7 @@ module.exports = {
       return err
     }
   },
-  getStatusByDeviceId: async (deviceId, hoursToSubtract) => {
-    const amountOfHoursBefore = new Date();
-    amountOfHoursBefore.setHours(amountOfHoursBefore.getHours() - hoursToSubtract);
-    const amountOfHoursBeforeInSeconds = amountOfHoursBefore / 1000
-
+  getStatusByDeviceId: async (deviceId, amountOfMinutesBeforeInSeconds) => {
     try {
       const { rows } = await pgClient.query(`
         WITH t AS (
@@ -36,7 +32,7 @@ module.exports = {
         )
 
         SELECT * FROM t ORDER BY date ASC;
-      `, [deviceId, amountOfHoursBeforeInSeconds])
+      `, [deviceId, amountOfMinutesBeforeInSeconds])
 
       return rows
     } catch (err) {
